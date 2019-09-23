@@ -13,15 +13,18 @@ import java.net.URL;
  */
 public class Test1URL {
     public static void main(String[] args) {
-
+        //创建URL连接对象
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         FileOutputStream fileOutputStream = null;
         try {
+            //获取文件下载连接
             URL url = new URL("http://localhost:8080/examples/hello.txt");
             urlConnection = (HttpURLConnection) url.openConnection();
+            //建立连接
             urlConnection.connect();
             inputStream = urlConnection.getInputStream();
+            //将文件下载到本项目中
             fileOutputStream = new FileOutputStream("hello2.txt");
             byte[] buffer=new byte[1024];
             int len;

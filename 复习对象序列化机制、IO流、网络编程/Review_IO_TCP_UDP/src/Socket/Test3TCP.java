@@ -8,12 +8,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Created by  é«˜é‡‘æ˜   2019/9/21 11:59
- * Description å®¢æˆ·ç«¯å‘é€æ–‡ä»¶ç»™æœåŠ¡ç«¯ï¼ŒæœåŠ¡ç«¯æ¥å—ä¿å­˜åˆ°æœ¬åœ°ä¹‹åï¼Œç»™å®¢æˆ·ç«¯è¿”å›â€œå‘é€æˆåŠŸâ€å¹¶å…³é—­ç›¸åº”è¿æ¥
+ * Created by  ¸ß½ğÃ÷   2019/9/21 11:59
+ * Description ¿Í»§¶Ë·¢ËÍÎÄ¼ş¸ø·şÎñ¶Ë£¬·şÎñ¶Ë½ÓÊÜ±£´æµ½±¾µØÖ®ºó£¬¸ø¿Í»§¶Ë·µ»Ø¡°·¢ËÍ³É¹¦¡±²¢¹Ø±ÕÏàÓ¦Á¬½Ó
  * Version 1.0
  */
 public class Test3TCP {
-    //å®¢æˆ·ç«¯
+    //¿Í»§¶Ë
     @Test
     public void client() {
         Socket socket = null;
@@ -21,21 +21,21 @@ public class Test3TCP {
         FileInputStream fil = null;
         InputStream is = null;
         try {
-            //åˆ›å»ºSocketå¯¹è±¡
+            //´´½¨Socket¶ÔÏó
             socket = new Socket(InetAddress.getByName("127.0.0.1"), 9090);
-            //è·å–è¾“å‡ºæµ
+            //»ñÈ¡Êä³öÁ÷
             os = socket.getOutputStream();
-            //åˆ›å»ºæ–‡ä»¶è¾“å…¥æµ
+            //´´½¨ÎÄ¼şÊäÈëÁ÷
             fil = new FileInputStream(new File("3.jpg"));
-            //å°†æ–‡ä»¶å‘é€å‡ºå»
+            //½«ÎÄ¼ş·¢ËÍ³öÈ¥
             byte[] bytes = new byte[1024];
             int len;
             while ((len = fil.read(bytes)) != -1) {
                 os.write(bytes, 0, len);
             }
-            //å‘Šè¯‰æœåŠ¡ç«¯æ–‡ä»¶å·²ç»å‘é€å®Œæ¯•
+            //¸æËß·şÎñ¶ËÎÄ¼şÒÑ¾­·¢ËÍÍê±Ï
             socket.shutdownOutput();
-            //æ¥æ”¶æœåŠ¡ç«¯çš„åé¦ˆä¿¡æ¯
+            //½ÓÊÕ·şÎñ¶ËµÄ·´À¡ĞÅÏ¢
             is = socket.getInputStream();
             ByteArrayOutputStream boas = new ByteArrayOutputStream();
             byte[] byte1 = new byte[20];
@@ -43,7 +43,7 @@ public class Test3TCP {
             while ((len1 = is.read(byte1)) != -1) {
                 boas.write(byte1, 0, len1);
             }
-            //æ‰“å°æœåŠ¡ç«¯å‘é€è¿‡æ¥çš„ä¿¡æ¯
+            //´òÓ¡·şÎñ¶Ë·¢ËÍ¹ıÀ´µÄĞÅÏ¢
             System.out.println(boas.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class Test3TCP {
         }
     }
 
-    //æœåŠ¡ç«¯
+    //·şÎñ¶Ë
     @Test
     public void server() {
         ServerSocket ss = null;
@@ -81,24 +81,24 @@ public class Test3TCP {
         FileOutputStream fileOutputStream = null;
         OutputStream os = null;
         try {
-            //åˆ›å»ºæœåŠ¡ç«¯Socketå¹¶å¯åŠ¨ç›‘å¬9090ç«¯å£
+            //´´½¨·şÎñ¶ËSocket²¢Æô¶¯¼àÌı9090¶Ë¿Ú
             ss = new ServerSocket(9090);
-            //è·å–å®¢æˆ·ç«¯çš„Socket
+            //»ñÈ¡¿Í»§¶ËµÄSocket
             socket = ss.accept();
-            //è·å–å®¢æˆ·ç«¯çš„è¾“å…¥æµ
+            //»ñÈ¡¿Í»§¶ËµÄÊäÈëÁ÷
             inputStream = socket.getInputStream();
-            //åˆ›å»ºæ–‡ä»¶è¾“å‡ºæµ
+            //´´½¨ÎÄ¼şÊä³öÁ÷
             fileOutputStream = new FileOutputStream(new File("33.jpg"));
-            //å°†æ–‡ä»¶è¯»å–å‡ºæ¥
+            //½«ÎÄ¼ş¶ÁÈ¡³öÀ´
             byte[] bytes = new byte[1024];
             int len;
             while ((len = inputStream.read(bytes)) != -1) {
                 fileOutputStream.write(bytes, 0, len);
             }
-            //è·å–å®¢æˆ·ç«¯çš„è¾“å‡ºæµ
+            //»ñÈ¡¿Í»§¶ËµÄÊä³öÁ÷
             os = socket.getOutputStream();
-            //ç»™å®¢æˆ·ç«¯å‘é€æ¶ˆæ¯
-            os.write("æ–‡ä»¶æ”¶åˆ°äº†".getBytes());
+            //¸ø¿Í»§¶Ë·¢ËÍÏûÏ¢
+            os.write("ÎÄ¼şÊÕµ½ÁË".getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
