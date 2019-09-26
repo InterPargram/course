@@ -43,6 +43,31 @@ public class JDBCTest05 {
         }
     }
 
+    @Test
+    public void testSelect() {
+        String name = "tom";
+        String password = "123456";
+        String sql = "select * from student where name ='" + name + "' and password='" + password + "'";
+        System.out.println(sql);
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = JDBCTools.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+                System.out.println("用户登录成功");
+            } else {
+                System.out.println("登录失败，用户名或密码不匹配");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCTools.release(resultSet, statement, connection);
+        }
+    }
+
     /*
      *使用 PrepareStatement 可以有效的解决 SQL注入 问题
      * */
