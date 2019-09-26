@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import org.junit.Test;
 
+=======
+>>>>>>> b577d1ba1c44c828a76ff0ab337f114bcf5b809f
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -17,6 +20,7 @@ import java.util.Properties;
  */
 public class JDBCTools {
 
+<<<<<<< HEAD
 
     /*
      * 加强版updata 使用PreparedStatement
@@ -41,6 +45,8 @@ public class JDBCTools {
         }
     }
 
+=======
+>>>>>>> b577d1ba1c44c828a76ff0ab337f114bcf5b809f
     /*
      * 用来执行 sql 语句的方法 insert delete updata
      * */
@@ -69,7 +75,11 @@ public class JDBCTools {
     }
 
     public static void release(ResultSet rs, Statement statement, Connection connection) {
+<<<<<<< HEAD
         if (rs != null) {
+=======
+        if (rs!=null){
+>>>>>>> b577d1ba1c44c828a76ff0ab337f114bcf5b809f
             try {
                 rs.close();
             } catch (SQLException e) {
