@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- 
+优点：
+--XML 是一种通用的数据格式
+--不必把数据强加到已定义好的格式中，而是要为数据自定义合适的标记
+--利用DOM可以完全掌控文档
+缺点：
+--如果文档是来自服务器，就必须保证文档含有正确的首部信息。若文档类型不正确，那么responseXML的值将是空的。
+--如果浏览器接受到长的XML文件后，DOM解析可能会很复杂 -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ajax XML Data Layout</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var aNodes = document.getElementsByTagName('a');
+				for (var i = 0; i < aNodes.length; i++) {
+					aNodes[i].onclick = function() {
+						var request = new XMLHttpRequest();
+						var method = "Get";
+						var url = this.href;
+						request.open(method, url);
+						request.send(null);
+						request.onreadystatechange = function() {
+							if (request.readyState == 4) {
+								if (request.status == 200 || request.status == 304) {
+									var result = request.responseXML;
+									var name = result.getElementsByTagName("name")[0].firstChild.nodeValue;
+									var website = result.getElementsByTagName("website")[0].firstChild.nodeValue;
+									var email = result.getElementsByTagName("email")[0].firstChild.nodeValue;
+									// alert(name);
+									// alert(website);
+									// alert(email);
+									var aNode = document.createElement("a");
+									aNode.appendChild(document.createTextNode(name))
+									aNode.href = "mailto:" + email;
+
+									var h2Node = document.createElement("h2");
+									h2Node.appendChild(aNode);
+
+									var aNode2 = document.createElement("a");
+									aNode2.appendChild(document.createTextNode(website))
+									aNode2.href = website;
+									
+									var divNdoe=document.getElementById("conent");
+									divNdoe.innerHTML="";
+									divNdoe.appendChild(aNode);
+									divNdoe.appendChild(aNode2);
+
+								}
+							}
+						}
+						return false;
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>Student</h1>
+		<ul>
+			<li>
+				<a href="files/Gao.xml">GaoJinMing</a>
+			</li>
+			<li>
+				<a href="files/Gao.1.xml">WeiKai</a>
+			</li>
+			<li>
+				<a href="files/Gao.2.xml">XvGongQing</a>
+			</li>
+		</ul>
+		<div id="conent"></div>
+	</body>
+</html>

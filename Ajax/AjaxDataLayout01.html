@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- 
+优点：
+-从服务器端发送的HTML代码在浏览器端不需要用 javascript进行解析
+-HTML的可读性好
+-HTML代码块与innerHTMl 属性搭配，效率高
+缺点：
+-若需要通过Ajax更新一篇文章的多个部分，HTML不合适
+-innerHTML并非DOM标准  -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ajax HTML Data Layout</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var aNodes = document.getElementsByTagName('a');
+				for (var i = 0; i < aNodes.length; i++) {
+					aNodes[i].onclick = function() {
+						var request = new XMLHttpRequest();
+						var method = "Get";
+						var url = this.href;
+						request.open(method, url);
+						request.send(null);
+						request.onreadystatechange = function() {
+							if (request.readyState == 4) {
+								if (request.status == 200 || request.status == 304) {
+									document.getElementById("conent").innerHTML = request.responseText;
+								}
+							}
+						}
+						return false;
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>Student</h1>
+		<ul>
+			<li>
+				<a href="files/GaoJinMing.html">GaoJinMing</a>
+			</li>
+			<li>
+				<a href="files/WeiKai.html">WeiKai</a>
+			</li>
+			<li>
+				<a href="files/XvGongQing.html">XvGongQing</a>
+			</li>
+		</ul>
+		<div id="conent"></div>
+	</body>
+</html>

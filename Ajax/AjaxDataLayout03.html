@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- 
+ 优点：
+ --作为一种数据传输格式，json与xml很相似，但是它更加灵巧。
+ --JSON不需要从服务器端发送含有特定内容类型的首部信息
+ 缺点：
+ --语法过于严谨
+ --代码不易读
+ --eval函数存在风险
+ -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <script type="text/javascript">
+			var jsonObject = {
+				"name": "Gao",
+				"age": 12,
+				"address": {
+					"city": "Weifang",
+					"School": "BinZX"
+				},
+				"work":function(){
+					alert("我在写代码。。。。。");
+				}
+			};
+			alert(jsonObject.name);
+			alert(jsonObject.age);
+			alert(jsonObject.address.city);
+			jsonObject.work();
+		</script> -->
+		<script type="text/javascript">
+			window.onload = function() {
+				var aNodes = document.getElementsByTagName('a');
+				for (var i = 0; i < aNodes.length; i++) {
+					aNodes[i].onclick = function() {
+						var request = new XMLHttpRequest();
+						var method = "Get";
+						var url = this.href;
+						request.open(method, url);
+						request.send(null);
+						request.onreadystatechange = function() {
+							if (request.readyState == 4) {
+								if (request.status == 200 || request.status == 304) {
+									var result = request.responseText;
+									var object = eval("(" + result + ")");
+									var name = object.Student.name;
+									var website = object.Student.website;
+									var email = object.Student.email;
+
+									var aNode = document.createElement("a");
+									aNode.appendChild(document.createTextNode(name))
+									aNode.href = "mailto:" + email;
+
+									var h2Node = document.createElement("h2");
+									h2Node.appendChild(aNode);
+
+									var aNode2 = document.createElement("a");
+									aNode2.appendChild(document.createTextNode(website))
+									aNode2.href = website;
+
+									var divNdoe = document.getElementById("conent");
+									divNdoe.innerHTML = "";
+									divNdoe.appendChild(aNode);
+									divNdoe.appendChild(aNode2);
+
+								}
+							}
+						}
+						return false;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Student</h1>
+		<ul>
+			<li>
+				<a href="files/andy.json">GaoJinMing</a>
+			</li>
+			<li>
+				<a href="files/Gao.1.xml">WeiKai</a>
+			</li>
+			<li>
+				<a href="files/Gao.2.xml">XvGongQing</a>
+			</li>
+		</ul>
+		<div id="conent"></div>
+	</body>
+</html>
