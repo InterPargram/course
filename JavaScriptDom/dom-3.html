@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>获取指定元素上的子节点</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var nNodes=document.getElementById("name");
+				var nlistNodes=nNodes.getElementsByTagName("li");
+				alert(nlistNodes.length);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="name">
+			<li>张良</li>
+			<li>项庄</li>
+			<li>项羽</li>
+			<li>刘邦</li>
+		</ul>
+	</body>
+</html>

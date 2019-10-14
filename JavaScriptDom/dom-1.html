@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var bjNode = document.getElementById("bj");
+				alert(bjNode);
+				var liNodes = document.getElementsByTagName("li");
+				alert(liNodes.length);
+				var nameNodes = document.getElementsByName("gender");
+				alert(nameNodes.length);
+			}
+		</script>
+	</head>
+	<body>
+		<p>你喜欢那个城市？</p>
+		<ul id="city">
+			<li id="bj" name="beijing">北京</li>
+			<li>南京</li>
+			<li>上海</li>
+		</ul>
+		<input type="radio" name="gender" value="male">male
+		<input type="radio" name="gender" value="female">female
+	</body>
+</html>

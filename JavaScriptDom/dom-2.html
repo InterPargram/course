@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="utf-8">
+		<title>读写属性节点</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				//先获取指定的那个元素节点
+				var nNodes=document.getElementById("name");
+				//在读取指定元素的值
+				alert(nNodes.value);
+				//设定指定属性的值
+				nNodes.value="张胜男";
+			}
+		</script>
+	</head>
+	<body>
+		用户名:<input type="text" id="name" name="username" value="laskdjf">
+	</body>
+</html>

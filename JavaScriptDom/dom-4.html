@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>获取文本节点</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var zlNode = document.getElementById("zl");
+				var zlTextNode = zlNode.firstChild;
+				alert(zlTextNode.nodeValue);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="name">
+			<li id="zl">张良</li>
+			<li>项庄</li>
+			<li>项羽</li>
+			<li>刘邦</li>
+		</ul>
+	</body>
+</html>

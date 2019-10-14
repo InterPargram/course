@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var nNode = document.getElementsByTagName("li");
+				for (var i = 0; i < nNode.length; i++) {
+					nNode[i].onclick = function() {
+						alert(this.firstChild.nodeValue);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="name">
+			<li>张良</li>
+			<li>项羽</li>
+			<li>项庄</li>
+			<li>刘邦</li>
+		</ul>
+		<ul id="age">
+			<li>25</li>
+			<li>36</li>
+			<li>39</li>
+			<li>43</li>
+		</ul>
+	</body>
+</html>

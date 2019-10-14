@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>正则表达式的使用</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				//使用正则表达式来进行判断
+				var liNode = document.getElementsByTagName("li");
+				for (var i = 0; i < liNode.length; i++) {
+					liNode[i].onclick = function() {
+						var val = this.firstChild.nodeValue;
+						var reg = /^\^{3}/g;
+						if (reg.test(val)) {
+							val = val.replace(reg, "");
+						} else {
+							val = "^^^" + val;
+						}
+						this.firstChild.nodeValue = val;
+					}
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="name">
+			<li>张良</li>
+			<li>项羽</li>
+			<li>项庄</li>
+			<li>刘邦</li>
+		</ul>
+		<ul id="age">
+			<li>25</li>
+			<li>36</li>
+			<li>39</li>
+			<li>43</li>
+		</ul>
+	</body>
+</html>

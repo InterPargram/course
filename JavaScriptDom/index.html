@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			//页面加载完成后触发该方法
+			window.onload = function() {
+				//获取所有的 button 节点 并取得第一个元素
+				var btn = document.getElementsByTagName("button")[0];
+				//当点击 button 时 触发该方法
+				btn.onclick = function() {
+					//浏览器弹窗
+					alert("hello word");
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<button>点一点</button>
+	</body>
+</html>
