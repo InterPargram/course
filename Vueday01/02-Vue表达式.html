@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<style type="text/css">
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 使用 v-cloak 可以解决 插值闪烁的问题 可以嵌入到任意的内容中 -->
+			<p v-cloak>-----------{{msg}}=========</p>
+			<!-- v-text 的作用和 {{ }} 作用是一样的 默认：没有插值闪烁问题 ；不能嵌入到内容中，它是将内容进行覆盖 -->
+			<h3 v-text="msg">=============</h3>
+			<!-- v-html 可以将内容输出为 html -->
+			<div v-html="msg2"></div>
+			<!-- v-bind 是 vue 中，提供的用于绑定属性的指令 后面的mytitle相当于变量-->
+			<input type="button" v-bind:title="mytitle+'123'" value="按钮">
+			<!-- v-bind 可以缩写为 :要绑定的属性 后面可以加合法的js表达式-->
+			<input type="button" :title="mytitle+'123'" value="按钮">
+			<div>
+				<input type="button" value="按钮" v-on:click="show">
+			</div>
+		</div>
+
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '12345',
+					msg2: '<h1>哈哈，我是 msg2 </h1>',
+					mytitle: '这是我自己定义的title'
+				},
+				methods: {
+					show: function() {
+						alert('Hello');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 1.如何定义一个基本的 vue 代码结构 -->
+<!-- 2.插值表达式 和 v-text -->
+<!-- 3.v-cloak -->
+<!-- 4.v-html -->
+<!-- 5.v-bind vue提供的属性绑定机制 缩写是： : -->
+<!-- 6.v-on   vue提供的事件绑定机制 缩写是： @ -->

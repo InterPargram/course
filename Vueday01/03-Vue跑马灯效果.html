@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="浪起来" @click="lang()">
+			<input type="button" value="低调" @click="stop()">
+			<h4>{{msg}}</h4>
+		</div>
+		<script type="text/javascript">
+			//在vm实例中想要获取 data 或者 method上的数据需要 使用 this.属性名/方法名
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '我无敌，你随意··',
+					intervalId: null
+				},
+				methods: {
+					lang() {
+						if (this.intervalId != null) return
+						this.intervalId = setInterval(() => {
+							//获取到头一个字符
+							var start = this.msg.substring(0, 1)
+							//获取到后面的字符
+							var end = this.msg.substring(1)
+							//对字符进行重新拼接
+							this.msg = end + start
+						}, 400)
+					},
+					stop() {
+						clearInterval(this.intervalId)
+						this.intervalId = null;
+					}
+
+				}
+			})
+			//Vue 会监听 自己身上 data 中所有数据的改变,只要数据已发生改变,就会自动把最新的数据,从data上同步到页面中去
+			//好处是程序员只需要关心数据,不需要考虑重新渲染DOM页面问题
+
+			//分析:
+			//1.给 [浪起来] 按钮绑定一个点击事件 v-on @
+			//2.在按钮的事件处理函数中,写相关业务逻辑代码:拿到 msg 字符串,调用 substring 方法截取字符串
+			//将截取之后的字符串进行拼接 重新赋值给msg,将业务逻辑代码放到 定时器中
+		</script>
+	</body>
+</html>
