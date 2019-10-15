@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+
+		<div id="app">
+			<h4>{{msg}}</h4>
+			
+			<!-- v-bind 只能实现数据的单向绑定 从 M 到 V （无法实现数据的双向绑定） -->
+			<!-- <input type="text" name="" id=""  :value="msg" style="width: 100%;"/> -->
+			
+			<!-- 使用 v-model 可以实现数据表单元素和 model 中数据的双向数据绑定 -->
+			<!-- input(radio text address email...)  select  checkbox  textrea -->
+			<input type="text" name="" id=""  v-model="msg" style="width: 100%;"/>
+			
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '我非常热爱敲代码，简直就是完美'
+				},
+				methods: {
+
+				}
+			})
+		</script>
+	</body>
+</html>
