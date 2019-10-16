@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+
+		<div id="app">
+			<p>MVVM的前端设计模式</p>
+			<p>Vue的最基本的代码结构</p>
+			<p>插值表达式 v-cloak v-text v-html v-bind(:) v-on(@) v-model v-if v-show v-for</p>
+			<p>事件修饰符 .stop .prevent .capture .self .once</p>
+			<p>el:指定要控制的区域 data是个对象，指定了控制区域内要用到的数据 methods是个对象 这里定义方法</p>
+			<p>在 vm 实例中想要访问 data 中的数据或者是 methods 中的方法 必须带 this</p>
+			<p>在 v-for 中 key 属性的作用（不接受对象）只接受 string/number</p>
+			<p>v-model 只能用在表单元素中</p>
+			<p>在 vue 中绑定样式两种方式 v-bind:class v-bind:style</p>
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {}
+			})
+		</script>
+	</body>
+</html>
