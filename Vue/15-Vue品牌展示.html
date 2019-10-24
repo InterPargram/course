@@ -66,7 +66,7 @@
 		</div>
 
 		<div id="app2">
-			<h2>{{ time |dataFormat()}}</h2>
+			<h2 v-color="'pink'" v-fontweight="900" v-fontsize="'30px'">{{ time |dataFormat()}}</h2>
 		</div>
 
 		<script type="text/javascript">
@@ -116,11 +116,12 @@
 				bind(el, binding, vnode) {
 					// el.style.color='red'
 					// console.log(binding.value)
-					
-					el.style.color=binding.value
-			}});
+
+					el.style.color = binding.value
+				}
+			});
 			//总结:样式写在 bind 中 行为写在 inserted 中
-			
+
 			var vm = new Vue({
 				el: '#app',
 				data: {
@@ -223,7 +224,18 @@
 							return `${y}-${m}-${d} ${hh}:${mm}:${ss} ~~~~`
 						}
 					}
+				},
+				directives: { //自定义私有指令
+					'fontweight': { //设置字体粗细
+						bind: function(el, binding) {
+							el.style.fontWeight = binding.value
+						}
+					},
+					'fontsize': function(el, binding) {//注意:这个function相当于直接写到了 bind 和 update 中
+						el.style.fontSize = parseInt(binding.value) + 'px'
+					}
 				}
+				
 			})
 		</script>
 	</body>
