@@ -25,13 +25,13 @@
 					</label>
 					<label>
 						Name:
-						<input type="text" name="" id="" value="" class="form-control" v-model="name" />
+						<input type="text" name="" id="" value="" class="form-control" v-model="name" @keyup.enter="add()" />
 					</label>
 					<input type="button" name="" id="" value="添加" class="btn btn-primary" @click="add()" />
 
 					<label>
 						搜索名称关键字：
-						<input type="text" class="form-control" name="" id="" value="" v-model="keywords" />
+						<input type="text" class="form-control" name="" id="" value="" v-model="keywords" v-focus/>
 
 					</label>
 				</div>
@@ -89,6 +89,28 @@
 				}
 			})
 
+			// 自定义全局按键修饰符
+			Vue.config.keyCodes.f2 = 113
+			
+			// 自定义全局指令 Vue.directive() 自动获取焦点
+			//参数一:指令的名称,注意:在定义的时候,指令的名称前面,不需要加 v- 前缀  但是在调用的时候必须加上
+			//参数二:是一个对象,这个对象里包含一些函数执行相关操作
+			//在每个函数中第一个参数永远都是 el 表示绑定指令的元素,这个 el 是一个原生的js对象(DOM)
+			Vue.directive('focus',{
+				//每当指令绑定到元素上的时候就执行这个方法,只执行一次
+				bind:function(el){
+					//在元素 刚绑定指令的时候还没有插入到DOM中,调用focus方法没有作用,元素只有插入DOM中才能获取焦点
+					/* el.focus() */
+				},
+				//表示元素插入到DOM中的时候会执行这个函数,只执行一次
+				inserted:function(el){
+					el.focus()
+				},
+				//当VNode更新的时候会执行这个函数,执行多次
+				updated:function(el){}
+				
+			})
+
 			var vm = new Vue({
 				el: '#app',
 				data: {
@@ -118,7 +140,7 @@
 						this.list.push(car)
 						this.id = this.name = ''
 					},
-					del(id) { 
+					del(id) {
 						//根据ID进行删除
 						//分析:1.如果根据ID找到这一项的索引
 						//2.如果找到索引直接调用数组的 splice 方法
@@ -162,6 +184,7 @@
 						/* return newList */
 					}
 				}
+
 			});
 
 			var vm2 = new Vue({
@@ -170,23 +193,23 @@
 					time: new Date()
 				},
 				methods: {},
-				filters:{
+				filters: {
 					//定义一个私有过滤器 过滤器条件有两个 1.过滤器的名字,处理函数
 
-					dataFormat:function(datastr, partent="") {
+					dataFormat: function(datastr, partent = "") {
 						/* 根据给定你的时间字符串，得到特定的时间 */
 						var dt = new Date(datastr)
-
+						/* 需要给字符串添加内容的时候就用 .padStart()方法 */
 						var y = dt.getFullYear()
-						var m = (dt.getMonth() + 1).toString().padStart(2,'0')
-						var d = dt.getDate().toString().padStart(2,'0')
+						var m = (dt.getMonth() + 1).toString().padStart(2, '0')
+						var d = dt.getDate().toString().padStart(2, '0')
 
 						if (partent.toLowerCase() === 'yyy-mm-dd') {
 							return `${y}-${m}-${d}`
 						} else {
-							var hh = dt.getHours().toString().padStart(2,'0')
-							var mm = dt.getMinutes().toString().padStart(2,'0')
-							var ss = dt.getSeconds().toString().padStart(2,'0')
+							var hh = dt.getHours().toString().padStart(2, '0')
+							var mm = dt.getMinutes().toString().padStart(2, '0')
+							var ss = dt.getSeconds().toString().padStart(2, '0')
 							return `${y}-${m}-${d} ${hh}:${mm}:${ss} ~~~~`
 						}
 					}
