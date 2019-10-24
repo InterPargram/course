@@ -17,38 +17,38 @@
 				<option value="/">/</option>
 			</select>
 			<input type="text" name="" id="" value="" v-model="n2" />
-			<input type="button" name="" id="" value="=" @click="cale"/>
+			<input type="button" name="" id="" value="=" @click="cale" />
 			<input type="text" name="" id="" value="" v-model="result" />
-			
+
 		</div>
-		
+
 		<script type="text/javascript">
-			var vm=new Vue({
-				el:'#app',
-				data:{
-					n1:0,
-					n2:0,
-					result:0,
-					opt:'+'
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					n1: 0,
+					n2: 0,
+					result: 0,
+					opt: '+'
 				},
-				methods:{
-					cale(){
+				methods: {
+					cale() {
 						//方法一
-						switch(this.opt){
+						switch (this.opt) {
 							case '+':
-							this.result=parseInt(this.n1)+parseInt(this.n2)
-							break;
+								this.result = parseInt(this.n1) + parseInt(this.n2)
+								break;
 							case '-':
-							this.result=parseInt(this.n1)-parseInt(this.n2)
-							break;
+								this.result = parseInt(this.n1) - parseInt(this.n2)
+								break;
 							case '*':
-							this.result=parseInt(this.n1)*parseInt(this.n2)
-							break;
+								this.result = parseInt(this.n1) * parseInt(this.n2)
+								break;
 							case '/':
-							this.result=parseInt(this.n1)/parseInt(this.n2)
-							break;
+								this.result = parseInt(this.n1) / parseInt(this.n2)
+								break;
 						}
-						
+
 						//方法二:JS 不推荐使用
 						/* var resultScan='parseInt(this.n1)'+this.opt+'parseInt(this.n2)';
 						this.result=eval(resultScan) */

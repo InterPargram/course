@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+
+		<div id="app">
+			<!-- 过滤器是将输出数据进行了‘修改’，但是原数据并没有被修改 （类似滤镜）-->
+			<!-- 过滤器后面可以跟参数 可以跟多个参数-->
+			<!-- 可以有多个过滤器同时使用 -->
+			<p>{{msg | msgFormat('来了来了','123')|test}}</p>
+		</div>
+
+		<script type="text/javascript">
+			/* 定义一个全局的msgFormat过滤器 */
+			Vue.filter('msgFormat', function(msg, arg, arg2) {
+				/* 字符串的 replace 方法第一个参数，除了可以写字符串之外，还可以定义一个正则表达式 */
+				return msg.replace(/好好/g, arg + arg2)
+			})
+
+			Vue.filter('test', function(msg) {
+				return msg + '======'
+			})
+
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '上联：世界那么大，我想去看看；下联：钱包这么小，哪都去不了；横批：好好上班'
+				},
+				methods: {}
+			})
+			//过滤器定义语法
+			//过滤器中的 function 第一个参数写死了,永远都是管道符前面传递过来的数据
+			/* Vue.filter('过滤器的名字', function(data) {
+				return data + '123'
+			}) */
+		</script>
+	</body>
+</html>
+<!-- 过滤器调用时候的格式 {{ name | nameopt }} -->

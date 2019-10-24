@@ -22,11 +22,11 @@
 		<div id="app">
 			<!-- .stop 阻止冒泡 -->
 			<!-- <div id="inner" @click="divHandler()">
-			<input type="button" name="" id="" value="戳他" @click.stop="btnHandler()" />
+				<input type="button" name="" id="" value="戳他" @click.stop="btnHandler()" />
 			</div> -->
 
 			<!-- .prevent 取消默认事件 -->
-			<!-- <a href="https://www.baidu.com" @click.prevent="linkHandler">有问题找度娘，度娘很强大</a>-->
+			<!-- <a href="https://www.baidu.com" @click.prevent="linkHandler">有问题找度娘，度娘很强大</a> -->
 
 			<!-- .capture 执行捕获机制 -->
 			<!-- <div id="inner" @click.capture="divHandler()">
@@ -35,7 +35,7 @@
 
 			<!-- .self 只有当前事件在该元素本身触发时才触发事件 -->
 			<!-- <div id="inner" @click.self="divHandler()">
-				<input type="button" name="" id="" value="点它" @click="btnHandler()"/>
+				<input type="button" name="" id="" value="点它" @click="btnHandler()" />
 			</div> -->
 
 			<!-- .once 事件只触发一次 -->
@@ -44,7 +44,7 @@
 			<!-- 演示：.stop 和 .self 的区别 -->
 			<!-- <div id="out" @click="outdivHandler">
 				<div id="inner" @click="divHandler">
-					<input type="button" name="" id="" value="点我" @click.stop="btnHandler()"/>
+					<input type="button" name="" id="" value="点我" @click.stop="btnHandler()" />
 				</div>
 			</div> -->
 
