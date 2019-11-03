@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/vue-resource-1.3.4.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7.css" />
+		<link rel="stylesheet" type="text/css" href="lib/animate.css" />
+	</head>
+	<body>
+
+		<div id="app">
+			<div>
+				<mycom1></mycom1>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			/* 组件也有自己的 data 数据 
+				组件中的 data 和实例中的组件不一样 组件中的 data 是一个方法，而且必须返回一个 对象 才行
+				组件中 data 的用法和 实例 中 data 的用法一样可以直接使用插值表达式
+			*/
+			Vue.component('mycom1', {
+				template: '<h1>这是一个全局组件----{{msg}}</h1>',
+				data: function() {
+					return {
+						msg: '这是在data中的数据'
+					}
+				}
+			})
+
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {}
+			})
+		</script>
+	</body>
+</html>
