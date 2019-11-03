@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/vue-resource-1.3.4.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.7.css" />
+		<link rel="stylesheet" type="text/css" href="lib/animate.css" />
+		<style type="text/css">
+			.ball {
+				width: 15px;
+				height: 15px;
+				background-color: red;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="app">
+			<input type="button" name="" id="" value="购物车" @click="flag=!flag" />
+
+			<transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+				<div class="ball" v-show="flag">
+				</div>
+			</transition>
+
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					flag: false
+				},
+				methods: {
+					//动画入场之前,动画没有开始
+					beforeEnter(el) {
+						el.style.transform = 'translate(0,0)'
+					},
+					enter(el,done) {
+						//这句话没有任何的实际意义但是如果不加上动画效果不能显示出来
+						el.offsetLeft
+						//动画结束的样式,动画已经结束
+						el.style.transform = 'translate(150px,450px)'
+						el.style.transition = 'all 1s ease'
+						//如果需要动画结束马上调用 afterEnter() 方法 则需要调用 done() 这个方法
+						//其实 done() 就是 afterEnter() 方法的引用
+						done()
+					},
+					afterEnter(el) {
+						//动画完成之后会调用这个方法
+						this.flag=!this.flag
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

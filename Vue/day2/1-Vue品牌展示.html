@@ -113,6 +113,7 @@
 
 			//定义一个全局指令 color 设置字体颜色
 			Vue.directive('color', {
+				//设置样式的时候不需要关心有没有插入到DOM中所以在bind中就可以将样式进行加载
 				bind(el, binding, vnode) {
 					// el.style.color='red'
 					// console.log(binding.value)
@@ -231,11 +232,11 @@
 							el.style.fontWeight = binding.value
 						}
 					},
-					'fontsize': function(el, binding) {//注意:这个function相当于直接写到了 bind 和 update 中
+					'fontsize': function(el, binding) { //注意:这个function相当于直接写到了 bind 和 update 中
 						el.style.fontSize = parseInt(binding.value) + 'px'
 					}
 				}
-				
+
 			})
 		</script>
 	</body>
